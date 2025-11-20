@@ -1,19 +1,15 @@
 import itertools
 
 def hamming_distance(s1, s2):
-    """Tính khoảng cách Hamming giữa 2 chuỗi."""
+
     return sum(c1 != c2 for c1, c2 in zip(s1, s2))
 
 def min_dist_to_set(x, code_set):
-    """Tìm khoảng cách ngắn nhất từ x đến một tập hợp các từ mã."""
     if not code_set: return float('inf')
     return min(hamming_distance(x, c) for c in code_set)
 
 def is_normal_code(code, n, r):
-    """
-    Kiểm tra tính Normal theo Definition 1 của bài báo.
-    Norm <= 2r + 1
-    """
+
     norm_limit = 2 * r + 1
     all_vectors = ["".join(seq) for seq in itertools.product("01", repeat=n)]
     
@@ -44,9 +40,6 @@ def is_normal_code(code, n, r):
 
     print("Mã này KHÔNG phải là Normal.")
     return False
-
-# --- CHẠY THỬ VỚI VÍ DỤ TRÊN ---
-# Mã lặp lại: 000 và 111
 my_code = ["000", "111"]
 length = 3
 radius = 1
